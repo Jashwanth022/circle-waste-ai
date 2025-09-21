@@ -8,35 +8,62 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* W2P-X Eco Design System */
+    --background: 210 40% 98%;
+    --foreground: 215 25% 27%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 215 25% 27%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 215 25% 27%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Eco Green Primary */
+    --primary: 122 39% 49%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 122 39% 65%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Eco Blue Secondary */  
+    --secondary: 207 90% 54%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-glow: 207 90% 70%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Energy Yellow Accent */
+    --accent: 60 100% 84%;
+    --accent-foreground: 215 25% 27%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Earthy Brown */
+    --earthy: 16 25% 46%;
+    --earthy-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --radius: 0.5rem;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 122 39% 49%;
+
+    --radius: 0.75rem;
+
+    /* W2P-X Gradients */
+    --gradient-eco-primary: linear-gradient(135deg, hsl(122, 39%, 49%), hsl(122, 50%, 35%));
+    --gradient-eco-blue: linear-gradient(135deg, hsl(207, 90%, 54%), hsl(207, 90%, 40%));
+    --gradient-trust: linear-gradient(135deg, hsl(207, 90%, 54%), hsl(122, 39%, 49%));
+    --gradient-reward: linear-gradient(135deg, hsl(122, 39%, 49%), hsl(45, 100%, 65%));
+    --gradient-energy: linear-gradient(135deg, hsl(60, 100%, 84%), hsl(122, 39%, 49%));
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1));
+
+    /* Shadows & Effects */
+    --shadow-eco: 0 10px 30px -10px hsl(122 39% 49% / 0.3);
+    --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    --shadow-glow: 0 0 40px hsl(122 39% 65% / 0.4);
+    
+    /* Animations */
+    --transition-eco: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-scanner: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +128,99 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* W2P-X Custom Components */
+@layer components {
+  .glass-card {
+    @apply backdrop-blur-md border border-white/20;
+    background: var(--gradient-glass);
+    box-shadow: var(--shadow-glass);
+  }
+
+  .eco-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .scanner-pulse {
+    animation: scanner-glow 2s ease-in-out infinite;
+  }
+
+  .confetti-burst {
+    animation: confetti-pop 0.6s ease-out;
+  }
+
+  .slide-fade-in {
+    animation: slide-fade-in 0.3s ease-out;
+  }
+}
+
+@layer utilities {
+  .gradient-eco-primary {
+    background: var(--gradient-eco-primary);
+  }
+  
+  .gradient-eco-blue {
+    background: var(--gradient-eco-blue);
+  }
+  
+  .gradient-trust {
+    background: var(--gradient-trust);
+  }
+  
+  .gradient-reward {
+    background: var(--gradient-reward);
+  }
+  
+  .gradient-energy {
+    background: var(--gradient-energy);
+  }
+
+  .text-gradient-eco {
+    background: var(--gradient-eco-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .transition-eco {
+    transition: var(--transition-eco);
+  }
+}
+
+/* W2P-X Animations */
+@keyframes scanner-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(122 39% 49% / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(122 39% 49% / 0.8), 0 0 60px hsl(207 90% 54% / 0.4);
+  }
+}
+
+@keyframes confetti-pop {
+  0% {
+    transform: scale(0.8) rotate(-5deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) rotate(2deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-fade-in {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
