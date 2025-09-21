@@ -5,29 +5,29 @@ export default function StatsOverview() {
   const stats = [
     {
       title: "Reports Processed",
-      value: "12,847",
-      change: "+23%",
+      value: "0",
+      change: "+0%",
       icon: Recycle,
       gradient: "gradient-eco-primary"
     },
     {
       title: "Active Locations",
-      value: "1,247",
-      change: "+15%", 
+      value: "0",
+      change: "+0%", 
       icon: MapPin,
       gradient: "gradient-eco-blue"
     },
     {
       title: "Rewards Distributed",
-      value: "₹84,390",
-      change: "+45%",
+      value: "₹0",
+      change: "+0%",
       icon: Award,
       gradient: "gradient-reward"
     },
     {
       title: "AI Accuracy",
-      value: "94.2%",
-      change: "+2%",
+      value: "0%",
+      change: "+0%",
       icon: Zap,
       gradient: "gradient-energy"
     }
